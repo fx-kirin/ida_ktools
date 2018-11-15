@@ -8,10 +8,10 @@ import ida_bytes
 connection = redis.StrictRedis(host='localhost', port=6379, db=0)
 
 def redis_get(name):
-    connection.get(name)
+    return connection.get(name)
 
 def redis_set(name, value):
-    connection.set(name, value)
+    return connection.set(name, value)
 
 def memcpy(dest, src, start_from, length):
     return dest[:start_from] + src[:length] + dest[start_from+length:]
