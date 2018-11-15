@@ -11,7 +11,7 @@ def redis_get(name):
     connection.get(name)
 
 def redis_set(name, value):
-    connection.get(name, value)
+    connection.set(name, value)
 
 def memcpy(dest, src, start_from, length):
     return dest[:start_from] + src[:length] + dest[start_from+length:]
