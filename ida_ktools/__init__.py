@@ -29,5 +29,5 @@ def log_call_parameter(arg_length=4, start_from=4):
     print("------------ Log Call 0x%x --------------- "%(cpu.eip))
     print('ecx :%x'%(cpu.ecx))
     for i in range(arg_length):
-        print('arg%d :%x'%(i+1, ida_bytes.get_32bit(cpu.esp+start_from+4*i)))
+        print('arg%d :0x%x'%(i+1, ida_bytes.get_32bit(cpu.esp+start_from+4*i)))
 
