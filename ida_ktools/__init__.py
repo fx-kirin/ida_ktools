@@ -33,8 +33,8 @@ def log_call_parameter(arg_length=4, start_from=4):
     for i in range(arg_length):
         info('arg%d :0x%x'%(i+1, ida_bytes.get_32bit(cpu.esp+start_from+4*i)))
         
-def info(text):
-    logging.info('|0x%x|'%(cpu.eip)+text)
+def info(text, *args):
+    logging.info('|0x%x|'%(cpu.eip)+text, *args)
 
 logzero.__name__ = ''
 logzero.setup_logger('', formatter=logzero.LogFormatter(color=False))
