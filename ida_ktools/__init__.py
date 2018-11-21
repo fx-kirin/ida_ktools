@@ -5,6 +5,8 @@ __author__ = 'fx-kirin <ono.kirin@gmail.com>'
 
 import redis
 import ida_bytes
+import logzero
+import logging
 connection = redis.StrictRedis(host='localhost', port=6379, db=0)
 
 def redis_get(name):
@@ -26,8 +28,13 @@ def get_32bit(pointer):
     return ida_bytes.get_32bit(pointer)
 
 def log_call_parameter(arg_length=4, start_from=4):
-    print("------------ Log Call 0x%x --------------- "%(cpu.eip))
-    print('ecx :%x'%(cpu.ecx))
+    info("------------ Log Call 0x%x --------------- "%(cpu.eip))
+    info('ecx :%x'%(cpu.ecx))
     for i in range(arg_length):
-        print('arg%d :0x%x'%(i+1, ida_bytes.get_32bit(cpu.esp+start_from+4*i)))
+        info('arg%d :0x%x'%(i+1, ida_bytes.get_32bit(cpu.esp+start_from+4*i)))
+        
+def info(text):
+    logging.info('|0x%x|'%(cpu.eip)+text)
 
+logzero.__name__ = ''
+logzero.setup_logger('', formatter=logzero.LogFormatter(color=False))
