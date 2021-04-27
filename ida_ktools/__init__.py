@@ -52,7 +52,7 @@ def log_operands():
         if op_type > 0:
             if op_type == 1:
                 register = idc.print_operand(cpu.eip, i)
-                value = idc.get_register_value(register)
+                value = idc.get_reg_value(register)
                 info(f"register:{register} op{i}:0x{value:x}")
             elif op_type == 4:
                 value = ctypes.c_int32(idc.get_operand_value(cpu.eip, idx)).value
