@@ -53,12 +53,12 @@ def log_operands():
             if op_type == 1:
                 register = idc.print_operand(cpu.eip, i)
                 value = idc.get_register_value(register)
-                info(f"register:{register} op{i}:{0xvalue:x}")
+                info(f"register:{register} op{i}:0x{value:x}")
             elif op_type == 4:
                 value = ctypes.c_int32(idc.get_operand_value(cpu.eip, idx)).value
                 address = cpu.ebp + value
                 value = get_32bit(address)
-                info(f"address:{address} op{i}:{0xvalue:x}")
+                info(f"address:{address} op{i}:0x{value:x}")
 
 
 logzero.__name__ = ""
