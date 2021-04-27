@@ -58,7 +58,7 @@ def log_operands():
                 value = ctypes.c_int32(idc.get_operand_value(cpu.eip, i)).value
                 address = cpu.ebp + value
                 value = get_32bit(address)
-                info(f"address:{address} op{i}:0x{value:x}")
+                info(f"address:0x{address:x} op{i}:0x{value:x}")
 
 
 logzero.__name__ = ""
