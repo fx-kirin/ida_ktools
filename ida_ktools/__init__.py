@@ -55,6 +55,12 @@ def log_operands():
                 register = idc.print_operand(cpu.eip, i)
                 value = idc.get_reg_value(register)
                 info(f"register:{register} op{i}:0x{value:x}")
+            elif op_type == 3:
+                register = idc.print_operand(cpu.eip, i)
+                register = re.match(r"\[(\w*)\]", register).group(1)
+                address = getattr(cpu, register)
+                value = get_32bit(address)
+                info(f"address:0x{address:x} op{i}:0x{value:x}")
             elif op_type == 4:
                 register = idc.print_operand(cpu.eip, i)
                 register = re.match(r"\[(\w*)\+(.*)\]", register).group(1)
