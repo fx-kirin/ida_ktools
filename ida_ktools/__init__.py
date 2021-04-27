@@ -12,7 +12,6 @@ __version__ = "0.1.0"
 __author__ = "fx-kirin <ono.kirin@gmail.com>"
 
 
-
 connection = redis.StrictRedis(host="localhost", port=6379, db=0)
 
 cpu = _cpu()
